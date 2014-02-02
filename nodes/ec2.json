@@ -4,11 +4,6 @@
         "server_root_password": "ohai[ec2][instance_id]",
         "server_repl_password": "ohai[ec2][instance_id]"
     },
-    "concrete5" : {
-        "admin": {
-            "password": "ohai[ec2][instance_id]"
-        }
-    }
     "run_list": [
         "recipe[concrete5]"
     ]
