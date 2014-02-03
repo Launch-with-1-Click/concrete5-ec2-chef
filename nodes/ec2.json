@@ -1,8 +1,8 @@
 {
     "mysql" : {
-        "server_debian_password": "ohai[ec2][instance_id]",
-        "server_root_password": "ohai[ec2][instance_id]",
-        "server_repl_password": "ohai[ec2][instance_id]"
+        "server_debian_password": "",
+        "server_root_password": "",
+        "server_repl_password": ""
     },
     "run_list": [
         "recipe[concrete5]"
