@@ -1,0 +1,1 @@
+@reboot root /usr/local/bin/chef-solo -c /var/chef/solo.rb -j /var/chef/nodes/ec2.json
