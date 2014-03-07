@@ -4,6 +4,15 @@
         "server_root_password": "",
         "server_repl_password": ""
     },
+    "php":{
+        "packages": ["php5-cgi", "php5", "php5-dev", "php5-cli", "php-pear"],
+        "directives": {
+            "default_charset": "UTF-8",
+            "mbstring.language": "neutral",
+            "mbstring.internal_encoding": "UTF-8",
+            "date.timezone": "UTC"
+        }
+    },
     "run_list": [
         "recipe[concrete5]"
     ]
