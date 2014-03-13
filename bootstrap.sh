@@ -17,7 +17,7 @@ curl -L https://www.opscode.com/chef/install.sh | bash
 mkdir -p /etc/chef/ohai/hints
 echo '{}' > /etc/chef/ohai/hints/ec2.json
 
-mkdir /var/chef
+mkdir -p /var/chef
 cd /var/chef/
 /usr/bin/git clone https://github.com/Launch-with-1-Click/concrete5-ec2-chef.git .
 # gem update --system is disabled on Debian
