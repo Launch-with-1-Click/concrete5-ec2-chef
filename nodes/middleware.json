@@ -17,7 +17,6 @@
         "recipe[concrete5::swapfile]",
         "recipe[apt::default]",
         "recipe[concrete5::apache2]",
-        "recipe[mysql::client]",
-        "recipe[mysql::server]"
+        "recipe[mysql::client]"
     ]
 }
