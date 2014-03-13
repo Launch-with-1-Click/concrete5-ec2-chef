@@ -26,3 +26,4 @@ cd /var/chef/
 /usr/local/bin/berks install --path cookbooks
 
 sudo install -o root -g root -m 0700 /vagrant/files/concrete5.cron /etc/cron.d/concrete5
+sudo /usr/local/bin/chef-solo -c /var/chef/solo.rb -j /var/chef/nodes/middleware.json
