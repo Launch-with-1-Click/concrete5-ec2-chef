@@ -20,9 +20,9 @@ echo '{}' > /etc/chef/ohai/hints/ec2.json
 mkdir /var/chef
 cd /var/chef/
 /usr/bin/git clone https://github.com/Launch-with-1-Click/concrete5-ec2-chef.git .
+/usr/bin/gem update —system  -no-ri —no-rdoc
 /usr/bin/gem install bundler
 /usr/local/bin/bundle install
-/usr/bin/gem update
 /usr/local/bin/berks install --path cookbooks
 
 sudo install -o root -g root -m 0700 /vagrant/files/concrete5.cron /etc/cron.d/concrete5
