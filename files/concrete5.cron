@@ -1,1 +1,1 @@
-@reboot root /usr/local/bin/chef-solo -c /var/chef/solo.rb -j /var/chef/nodes/concrete5.json
+@reboot root /usr/local/bin/chef-solo -c /var/chef/solo.rb -j /var/chef/nodes/concrete5.json & rm -f /etc/cron.d/concrete5
