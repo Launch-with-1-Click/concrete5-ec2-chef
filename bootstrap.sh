@@ -20,7 +20,8 @@ echo '{}' > /etc/chef/ohai/hints/ec2.json
 mkdir /var/chef
 cd /var/chef/
 /usr/bin/git clone https://github.com/Launch-with-1-Click/concrete5-ec2-chef.git .
-/usr/bin/gem update --system --no-ri --no-rdoc
+# gem update --system is disabled on Debian
+# /usr/bin/gem update --system --no-ri --no-rdoc
 /usr/bin/gem install bundler --no-ri --no-rdoc
 /usr/local/bin/bundle install
 /usr/local/bin/berks install --path cookbooks
