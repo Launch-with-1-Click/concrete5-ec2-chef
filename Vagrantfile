@@ -20,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     aws.ami = "ami-59a4a230" # Ubuntu12.04.3 LTS 64bit
 
     #aws.security_groups = 'default'
-    aws.instance_type = "c3.medium"
+    aws.instance_type = "c3.large"
 
     override.ssh.username = "ubuntu"
     override.ssh.private_key_path = ENV['AWS_EC2_KEYPAIR_PATH']
