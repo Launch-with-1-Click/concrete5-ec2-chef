@@ -1,3 +1,8 @@
-site :opscode
+source "https://supermarket.chef.io"
+metadata
 
-cookbook 'concrete5', git: "https://github.com/Launch-with-1-Click/concrete5.git"
+## If you want ignore cookbooks for test.
+## `berks install --without kitchen`
+group :kitchen do
+  cookbook 'test_swapon', :path => './test/cookbooks/test_swapon'
+end
