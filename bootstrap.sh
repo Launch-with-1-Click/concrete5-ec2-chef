@@ -2,29 +2,76 @@
 
 set -ex
 
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-locale-gen en_US.UTF-8
-dpkg-reconfigure locales
+sudo yum update -y
+sudo yum clean all -y
+sudo yum install -y git
+sudo yum install -y nginx
+sudo yum install -y mysql
+sudo yum install -y php55
+sudo yum install -y php55-bcmath
+sudo yum install -y php55-cli
+sudo yum install -y php55-common
+sudo yum install -y php55-dba
+sudo yum install -y php55-devel
+sudo yum install -y php55-embedded
+sudo yum install -y php55-enchant
+sudo yum install -y php55-fpm
+sudo yum install -y php55-gd
+sudo yum install -y php55-gmp
+sudo yum install -y php55-imap
+sudo yum install -y php55-intl
+sudo yum install -y php55-ldap
+sudo yum install -y php55-mbstring
+sudo yum install -y php55-mcrypt
+sudo yum install -y php55-mssql
+sudo yum install -y php55-mysqlnd
+sudo yum install -y php55-odbc
+sudo yum install -y php55-pdo
+sudo yum install -y php55-pecl-apc
+sudo yum install -y php55-pecl-igbinary
+sudo yum install -y php55-pecl-oauth
+sudo yum install -y php55-pecl-propro-devel
+sudo yum install -y php55-pecl-raphf-devel
+sudo yum install -y php55-pecl-xdebug
+sudo yum install -y php55-pgsql
+sudo yum install -y php55-process
+sudo yum install -y php55-pspell
+sudo yum install -y php55-recode
+sudo yum install -y php55-snmp
+sudo yum install -y php55-soap
+sudo yum install -y php55-tidy
+sudo yum install -y php55-xml
+sudo yum install -y php55-xmlrpc
+sudo yum install -y wget git gcc-c++ openssl-devel
+sudo yum install -y mysql-server
 
-apt-get update -y
-apt-get upgrade -y
-apt-get install -y git ruby1.9.3 libxslt-dev libxml2-dev make
+sudo chown -R nginx:nginx  /var/lib/php/5.5/session/
+sudo sed -i -e "s/user = apache/user = nginx/g" /etc/php-fpm-5.5.d/www.conf
+sudo sed -i -e "s/group = apache/group = nginx/g" /etc/php-fpm-5.5.d/www.conf
+sudo sed -i -e "s/short_open_tag = Off/short_open_tag = On/g" /etc/php.ini
 
-curl -L https://www.opscode.com/chef/install.sh | bash
+sudo sh -c "curl -L https://gist.githubusercontent.com/miya0001/285cc54981305f5f5e13/raw/fc9e731f76e1a33b9c0cd4559b67abaa25ab041d/gistfile1.txt > /etc/nginx/conf.d/concrete5.conf"
 
-mkdir -p /etc/chef/ohai/hints
-echo '{}' > /etc/chef/ohai/hints/ec2.json
+git clone git://github.com/creationix/nvm.git ~/.nvm
+source ~/.nvm/nvm.sh & nvm install 0.10
 
-mkdir -p /var/chef
-cd /var/chef/
-/usr/bin/git clone https://github.com/Launch-with-1-Click/concrete5-ec2-chef.git .
-# gem update --system is disabled on Debian
-# /usr/bin/gem update --system --no-ri --no-rdoc
-/usr/bin/gem install bundler --no-ri --no-rdoc
-/usr/local/bin/bundle install
-/usr/local/bin/berks install --path cookbooks
+sudo mkdir -p /var/www/concrete5
+cd /var/www/concrete5
+sudo git clone https://github.com/concrete5/concrete5-5.7.0.git .
+sudo chown -R ec2-user:ec2-user /var/www/concrete5
 
-sudo install -o root -g root -m 0700 /vagrant/files/concrete5.cron /etc/cron.d/concrete5
-sudo /usr/local/bin/chef-solo -c /var/chef/solo.rb -j /var/chef/nodes/middleware.json
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+cd /var/www/concrete5/web/concrete/
+composer install
+
+cd /var/www/concrete5/build
+source ~/.nvm/nvm.sh & npm install -g grunt-cli
+source ~/.nvm/nvm.sh & npm install
+source ~/.nvm/nvm.sh & grunt release
+
+sudo chown -R nginx:nginx /var/www/concrete5
+
+sudo chkconfig nginx on
+sudo chkconfig php-fpm-5.5 on
+sudo chkconfig mysqld on
