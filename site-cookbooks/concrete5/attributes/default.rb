@@ -1,11 +1,7 @@
 # encoding: utf-8
 # vim: ft=ruby expandtab shiftwidth=2 tabstop=2
 
-default[:concrete5][:git_repository] = 'https://github.com/concrete5/concrete5.git';
-default[:concrete5][:git_revision]   = '5.6.2.1';
 
-default[:concrete5][:cli_url]   = 'https://raw2.github.com/concrete5/concrete5/master/cli/install-concrete5.php';
-default[:concrete5][:cli_dir]   = '/usr/share/concrete5';
 
 default[:concrete5][:db][:name] = "concrete5"
 default[:concrete5][:db][:user] = "concrete5"
