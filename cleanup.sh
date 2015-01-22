@@ -13,8 +13,8 @@ cp /dev/null /var/log/syslog
 yes | cp /dev/null /root/.ssh/authorized_keys
 yes | cp /dev/null /root/.bash_history
 if [ -d /home/ubuntu ]; then
-  yes | cp /dev/null /home/ubuntu/.ssh/authorized_keys
-  yes | cp /dev/null /home/ubuntu/.bash_history
+  yes | cp /dev/null /home/ec2-user/.ssh/authorized_keys
+  yes | cp /dev/null /home/ec2-user/.bash_history
 fi
 history -c
 
