@@ -53,7 +53,8 @@ sudo sed -i -e "s/short_open_tag = Off/short_open_tag = On/g" /etc/php.ini
 sudo sh -c "curl -L https://gist.githubusercontent.com/miya0001/285cc54981305f5f5e13/raw/fc9e731f76e1a33b9c0cd4559b67abaa25ab041d/gistfile1.txt > /etc/nginx/conf.d/concrete5.conf"
 
 git clone git://github.com/creationix/nvm.git ~/.nvm
-source ~/.nvm/nvm.sh & nvm install 0.10
+source ~/.nvm/nvm.sh
+nvm install 0.10
 
 sudo mkdir -p /var/www/concrete5
 cd /var/www/concrete5
@@ -66,9 +67,9 @@ cd /var/www/concrete5/web/concrete/
 composer install
 
 cd /var/www/concrete5/build
-source ~/.nvm/nvm.sh & npm install -g grunt-cli
-source ~/.nvm/nvm.sh & npm install
-source ~/.nvm/nvm.sh & grunt release
+npm install -g grunt-cli
+npm install
+grunt release
 
 sudo chown -R nginx:nginx /var/www/concrete5
 
