@@ -76,3 +76,10 @@ sudo chown -R nginx:nginx /var/www
 sudo chkconfig nginx on
 sudo chkconfig php-fpm-5.5 on
 sudo chkconfig mysqld on
+
+sudo /etc/init.d/php-fpm start
+sudo /etc/init.d/nginx start
+sudo /etc/init.d/mysqld start
+
+sudo sh -c "curl -L https://raw.githubusercontent.com/Launch-with-1-Click/concrete5-ec2-chef/master/files/setup.sh > /usr/share/setup.sh"
+sudo sh -c "echo '@reboot nginx bash /usr/share/setup.sh & rm -f /etc/cron.d/c5' > /etc/cron.d/c5"
