@@ -56,10 +56,10 @@ git clone git://github.com/creationix/nvm.git ~/.nvm
 source ~/.nvm/nvm.sh
 nvm install 0.10
 
-sudo mkdir -p /var/www/concrete5
-cd /var/www/concrete5
-sudo git clone https://github.com/concrete5/concrete5-5.7.0.git .
-sudo chown -R ec2-user:ec2-user /var/www/concrete5
+cd /var/www
+sudo curl -L https://github.com/concrete5/concrete5-5.7.0/archive/5.7.3.1.tar.gz | tar zxvf -
+sudo mv concrete5-5.7.0-5.7.3.1 concrete5
+sudo chown -R ec2-user:ec2-user /var/www
 
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
@@ -71,7 +71,7 @@ npm install -g grunt-cli
 npm install
 grunt release
 
-sudo chown -R nginx:nginx /var/www/concrete5
+sudo chown -R nginx:nginx /var/www
 
 sudo chkconfig nginx on
 sudo chkconfig php-fpm-5.5 on
