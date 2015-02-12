@@ -18,6 +18,14 @@ Concrete5 5.7
 
 ## 4. DEFAULT USERNAMES AND PASSWORDS
 
+### concrete5
+
+* Admin User: admin
+* Admin Password: (your instance ID)
+* Admin Email: c5@example.com
+
+### MySQL
+
 * MySQL User: c5
 * MySQL Database: c5
 * MySQL Password: (your instance ID)
