@@ -72,6 +72,7 @@ npm install
 grunt release
 
 sudo chown -R nginx:nginx /var/www
+sudo chown -R nginx:nginx /var/lib/php
 
 sudo chkconfig nginx on
 sudo chkconfig php-fpm-5.5 on
