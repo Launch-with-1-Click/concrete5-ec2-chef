@@ -57,8 +57,8 @@ source ~/.nvm/nvm.sh
 nvm install 0.10
 
 cd /var/www
-curl -L https://github.com/concrete5/concrete5/archive/5.7.4.2.tar.gz | sudo tar zxvf -
-sudo mv concrete5-5.7.4.2 concrete5
+sudo curl -L https://github.com/concrete5/concrete5-5.7.0/archive/5.7.3.1.tar.gz | tar zxvf -
+sudo mv concrete5-5.7.0-5.7.3.1 concrete5
 sudo chown -R ec2-user:ec2-user /var/www
 
 curl -sS https://getcomposer.org/installer | php
