@@ -64,6 +64,7 @@ sudo chown -R ec2-user:ec2-user /var/www
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 cd /var/www/concrete5/web/concrete/
+sudo /usr/local/bin/composer self-update
 /usr/local/bin/composer install
 
 cd /var/www/concrete5/build
